@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .registration-container {
+            max-width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .registration-container h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .registration-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .registration-container label {
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .registration-container input[type="text"],
+        .registration-container input[type="email"],
+        .registration-container input[type="password"],
+        .registration-container input[type="file"],  {# Add this line for the profile picture field #}
+        .registration-container textarea {  {# Add this line for the bio field #}
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .registration-container button[type="submit"] {
+            background-color: green;
+            border: none;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .registration-container button[type="submit"]:hover {
+            background-color: black;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section class="registration-container">
+        <h3>Register</h3>
+
+        <form name="registration" method="post" enctype="multipart/form-data">  
+            {{ form_start(registrationForm) }}
+
+            {{ form_row(registrationForm._token) }}
+
+            <div class="form-group">
+                {{ form_label(registrationForm.email) }}
+                {{ form_errors(registrationForm.email) }}
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(registrationForm.username) }}
+                {{ form_errors(registrationForm.username) }}
+                {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(registrationForm.profilePicture) }}
+                {{ form_errors(registrationForm.profilePicture) }}
+                {{ form_widget(registrationForm.profilePicture, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(registrationForm.bio) }}
+                {{ form_errors(registrationForm.bio) }}
+                {{ form_widget(registrationForm.bio, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(registrationForm.Password) }}
+                {{ form_errors(registrationForm.Password) }}
+                {{ form_widget(registrationForm.Password, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.register, {'attr': {'class': 'btn btn-success'}}) }}
+            </div>
+
+            {{ form_end(registrationForm) }}
+
+            <a href="{{ path('app_login') }}">Log in</a>
+        </form>
+    </section>
+{% endblock %}

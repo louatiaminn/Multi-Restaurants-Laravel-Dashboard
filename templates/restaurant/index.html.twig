@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant Index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            width: 300px;
+            margin: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .card:hover {
+            background-color: #f5f5f5;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .actions a.edit {
+            background-color: #ffc107;
+        }
+
+        .actions a:hover {
+            background-color: #218838;
+        }
+
+        .no-records {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+        }
+
+        .create-new {
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .create-new:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Restaurant Index</h1>
+
+    <div class="cards-container">
+        {% if restaurants|length > 0 %}
+            {% for restaurant in restaurants %}
+                <div class="card">
+                    <strong>ID:</strong> {{ restaurant.id }}<br>
+                    <strong>Name:</strong> {{ restaurant.name }}<br>
+                    <strong>Username:</strong> {{ restaurant.username }}<br>
+                    <strong>Email:</strong> {{ restaurant.email }}<br>
+                    <strong>Password:</strong> {{ restaurant.password }}<br>
+                    <strong>Address:</strong> {{ restaurant.adresse }}<br>
+                    <strong>Num:</strong> {{ restaurant.num }}<br>
+                    <strong>Registration Date:</strong> {{ restaurant.registrationDate }}<br>
+                    <strong>Is Active:</strong> {{ restaurant.isActive ? 'Yes' : 'No' }}<br>
+                    <strong>Logo:</strong> {{ restaurant.logo }}<br>
+                    <strong>Description:</strong> {{ restaurant.description }}<br>
+                    <strong>Category:</strong> {{ restaurant.category }}<br>
+                    <div class="actions">
+                        <a href="{{ path('app_restaurant_show', {'id': restaurant.id}) }}">Show</a>
+                        <a href="{{ path('app_restaurant_edit', {'id': restaurant.id}) }}" class="edit">Edit</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="card no-records">No records found</div>
+        {% endif %}
+    </div>
+
+    <a href="{{ path('app_restaurant_new') }}" class="create-new">Create New</a>
+{% endblock %}

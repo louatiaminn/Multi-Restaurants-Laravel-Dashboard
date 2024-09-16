@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category Index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #343a40; /* Change to the color you want */
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        a.edit {
+            background-color: #ffc107;
+        }
+
+        a:hover {
+            background-color: #218838;
+        }
+
+        .no-records {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+        }
+
+        .create-new {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .create-new:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Category Index</h1>
+
+    {% if categories|length > 0 %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.description }}</td>
+                        <td>
+                            <a href="{{ path('app_category_show', {'id': category.id}) }}">Show</a>
+                            <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="edit">Edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-records">No records found</p>
+    {% endif %}
+
+    <a href="{{ path('app_category_new') }}" class="create-new">Create New</a>
+{% endblock %}

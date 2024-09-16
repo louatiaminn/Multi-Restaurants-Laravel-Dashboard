@@ -1,0 +1,85 @@
+{# templates/user/profile.html.twig #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    
+    <style>
+    .profile-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-card {
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .user-card img {
+        width: 20%; /* Adjusted width */
+        height: auto;
+        border-radius: 10px 10px 0 0;
+        display: block;
+        margin: 0 auto; /* Centering the image */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #6c757d;
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #2779bd;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="profile-container">
+    <div class="user-card card">
+        {% if userProfile.profilePicture %}
+            <img class="card-img-top" src="{{ asset('uploads/profile_pictures/' ~ userProfile.profilePicture) }}" alt="Profile Picture" >
+        {% else %}
+            <p class="card-text text-center">No profile picture available</p>
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ userProfile.username }}</h5>
+            <p class="card-text"><strong>Email:</strong> {{ userProfile.email }}</p>
+            <p class="card-text"><strong>Bio:</strong> {{ userProfile.bio }}</p>
+            <a href="{{ path('admin') }}" class="btn btn-primary">Go Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Order{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: #5a6268;
+        }
+
+        .delete-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Order</h1>
+
+    <div class="form-container">
+        {{ include('order/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+
+    <a href="{{ path('app_order_index') }}" class="back-link">Back to List</a>
+
+    <div class="delete-form">
+        {{ include('order/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

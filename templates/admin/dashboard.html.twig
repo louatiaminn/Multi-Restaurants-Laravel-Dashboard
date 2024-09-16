@@ -1,0 +1,91 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    <style>
+        .custom-img-size {
+            height: 200px; /* Adjust the height as needed */
+            object-fit: cover;
+        }
+        .card {
+            margin-bottom: 20px; /* Add space between cards */
+        }
+    </style>
+
+    <h1 class="h3 mb-4 text-gray-800">
+        <div class="alert alert-info" role="alert">
+            <p>You are connected as!
+                <a href="/profile" class="btn btn-primary">
+                    {% if app.user %}
+                        {{ app.user.username }}
+                    {% endif %}
+                </a>
+            </p>
+        </div>
+    </h1>
+
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top custom-img-size" src="https://upmeals.ca/wp-content/uploads/2021/05/foodapp.jpeg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Explore a variety of restaurants in our list</h5>
+                        <a href="{{ path('app_restaurant_index') }}" class="btn btn-primary">Restaurant Lists</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top custom-img-size" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuExkL4xHmBaE1Mzo6mXAyYz_UDk8Apflg0w&usqp=CAU" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Explore the categories in our list</h5>
+                        <a href="{{ path('app_category_index') }}" class="btn btn-primary">Category Lists</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top custom-img-size" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2Uy46_9pbF58sBF0pW841YDLSoye6LMXhMP6ypwFfN3McRTGMon2d892J8WCUjTBniE&usqp=CAU" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Explore our Products</h5>
+                        <a href="{{ path('app_product_index') }}" class="btn btn-primary">Product Lists</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top custom-img-size" src="https://content.wepik.com/statics/90128560/preview-page0.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">View your Invoices</h5>
+                        <a href="{{ path('app_invoice_index') }}" class="btn btn-primary">Invoice Lists</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top custom-img-size" src="https://img.freepik.com/free-psd/restaurant-poster-template_23-2148466840.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Check out our Offers</h5>
+                        <a href="{{ path('app_offer_index') }}" class="btn btn-primary">Offer Lists</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top custom-img-size" src="https://booster.io/wp-content/uploads/custom-order-numbers-e1438361586475.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Track your Orders</h5>
+                        <a href="{{ path('app_order_index') }}" class="btn btn-primary">Order Lists</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
